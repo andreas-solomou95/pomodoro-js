@@ -1,12 +1,12 @@
-const SESSION_TIME = 25 * 60 * 1000;
-const BREAK_TIME = 5 * 60 * 1000;
+const SESSION_TIME = 1 * 2 * 1000;
+const BREAK_TIME = 1 * 2 * 1000;
 const STEP = 1000;
 
-const timeRef = document.getElementById("time");
+const timerRef = document.getElementById("timer");
 const controlsRef = document.getElementById("controls-container");
 
 let interval;
-let time = SESSION_TIME;
+let timer = SESSION_TIME;
 let pausedAt;
 let isBrake = false;
 let state;
@@ -19,13 +19,14 @@ function start() {
     updateScreen();
 
     interval = setInterval(() => {
-        if (time - STEP >= 0) {
-            time -= STEP;
+        if (timer - STEP >= 0) {
+            timer -= STEP;
         } else {
-            time = isBrake ? SESSION_TIME : BREAK_TIME;
+            timer = isBrake ? SESSION_TIME : BREAK_TIME;
             isBrake = !isBrake;
+            updateBreakState();
         }
-        updateTime(time);
+        updateTimer(timer);
     }, STEP);
 }
 
@@ -34,36 +35,41 @@ function pause() {
     state = 'paused';
     updateScreen();
 
-    pausedAt = time;
+    pausedAt = timer;
 }
 
 function stop() {
     clearInterval(interval);
-    isBrake = false;
     init();
 }
 
-function updateTime(timeNext) {
-    timeRef.innerHTML = new Date(timeNext).toISOString().slice(14, -5);
+function updateTimer(timerNext) {
+    timerRef.innerHTML = new Date(timerNext).toISOString().slice(14, -5);
 }
 
 function updateScreen() {
-    if (isBrake) {
-        document.body.classList.add('brake');
-    } else { 
-        document.body.classList.remove('brake');
-    }
     controlsRef.removeAttribute('class');
     controlsRef.classList.add(state);
+}
+
+function updateBreakState() {
+    if (isBrake) {
+        document.body.classList.add('brake');
+        return;
+    }
+    document.body.classList.remove('brake');
 }
 
 function init() {
     state = 'idle';
     updateScreen();
 
-    time = SESSION_TIME;
+    isBrake = false;
+    updateBreakState();
+    
+    timer = SESSION_TIME;
     pausedAt = null;
-    updateTime(time);
+    updateTimer(timer);
 }
 
 function running() {
