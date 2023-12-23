@@ -1,0 +1,25 @@
+body {
+    background-color: #ff9999;
+    transition: background-color 0.2s linear;
+}
+
+body.brake {
+    background-color: #9999ff;
+}
+
+/* body.idle button.start {
+    display: block;
+} */
+
+#controls-container.idle button.pause,
+#controls-container.idle button.stop {
+    display: none;
+}
+
+#controls-container.running button.start {
+    display: none;
+}
+
+#controls-container.paused button.pause {
+    display: none;
+}
