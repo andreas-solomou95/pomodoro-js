@@ -1,10 +1,12 @@
 body {
-    background-color: #ff9999;
     transition: background-color 0.2s linear;
+    background-color: #071b18;
+    color: #7ac4b1;
 }
 
 body.brake {
-    background-color: #9999ff;
+    background-color: #0a0a24;
+    color: #9999ff;
 }
 
 /* body.idle button.start {
