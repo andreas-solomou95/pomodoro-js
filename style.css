@@ -2,6 +2,8 @@ body {
     transition: background-color 0.2s linear;
     background-color: #071b18;
     color: #7ac4b1;
+    margin: 0;
+    padding: 0;
 }
 
 body.brake {
@@ -9,9 +11,25 @@ body.brake {
     color: #9999ff;
 }
 
-/* body.idle button.start {
-    display: block;
-} */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+#timer {
+    font-size: 40vmin;
+    box-sizing: border-box;
+}
+
+#controls-container {
+    text-align: center;
+    height: 10vmin;
+    margin-top: 5vmin;
+}
 
 #controls-container.idle button.pause,
 #controls-container.idle button.stop {
@@ -24,4 +42,29 @@ body.brake {
 
 #controls-container.paused button.pause {
     display: none;
+}
+
+button {
+    padding: 0;
+    margin: 0 5vmin;
+    border: none;
+    background: transparent;
+    color: inherit;
+    height: 100%;
+    width: auto;
+    font-size: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+button svg {
+    height: 100%;
+    width: 100%;
+    fill: #7ac4b1;
+}
+
+.brake button svg {
+    height: 100%;
+    width: 100%;
+    fill: #9999ff;
 }
