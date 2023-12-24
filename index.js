@@ -69,8 +69,8 @@ function updateBreakState() {
 function updateTabIcon() {
     const tabIcon = document.querySelector('link[rel=icon]');
     tabIcon.href = isBreak 
-        ? "/assets/break.ico"
-        : "/assets/focus.ico";
+        ? "assets/break.ico"
+        : "assets/focus.ico";
 }
 
 function init() {
