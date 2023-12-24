@@ -8,16 +8,16 @@ body {
     --counter-size: 100%;
 }
 
-body.brake {
+body.break {
     background-color: #0a0a24;
     color: #9999ff;
 }
 
-body:has(button:active), body:has(button:hover) {
+body:has(button:active) {
     background-color: #103e38;
 }
 
-body.brake:has(button:active), body.brake:has(button:hover) {
+body.break:has(button:active) {
     background-color: #19195f;
 }
 
@@ -93,7 +93,7 @@ button svg {
     fill: #7ac4b1;
 }
 
-.brake button svg {
+.break button svg {
     height: 100%;
     width: 100%;
     fill: #9999ff;
@@ -109,7 +109,7 @@ button svg {
     border-radius: 10vmin;
 }
 
-.brake .counter {
+.break .counter {
     background-color: #9999ff;
 }
 

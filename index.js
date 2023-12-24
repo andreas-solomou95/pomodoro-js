@@ -1,4 +1,4 @@
-const SESSION_TIME = 1 * 10 * 1000;
+const SESSION_TIME = 25 * 60 * 1000;
 const BREAK_TIME = 5 * 60 * 1000;
 const STEP = 1000;
 
@@ -9,7 +9,7 @@ const controlsRef = document.getElementById("controls-container");
 let interval;
 let timer = SESSION_TIME;
 let pausedAt;
-let isBrake = false;
+let isBreak = false;
 let state;
 
 init();
@@ -17,14 +17,14 @@ init();
 function start() {
     clearInterval(interval);
     state = 'running';
-    updateScreen();
+    updateControls();
 
     interval = setInterval(() => {
         if (timer - STEP >= 0) {
             timer -= STEP;
         } else {
-            timer = isBrake ? SESSION_TIME : BREAK_TIME;
-            isBrake = !isBrake;
+            timer = isBreak ? SESSION_TIME : BREAK_TIME;
+            isBreak = !isBreak;
             updateBreakState();
         }
         updateTimer(timer);
@@ -34,7 +34,7 @@ function start() {
 function pause() {
     clearInterval(interval);
     state = 'paused';
-    updateScreen();
+    updateControls();
 
     pausedAt = timer;
 }
@@ -46,34 +46,34 @@ function stop() {
 
 function updateTimer(timerNext) {
     timerRef.innerHTML = new Date(timerNext).toISOString().slice(14, -5);
-    bodyRef.style.setProperty('--counter-size', `${timerNext * 100 / (isBrake ? BREAK_TIME : SESSION_TIME)}%`);
+    bodyRef.style.setProperty('--counter-size', `${timerNext * 100 / (isBreak ? BREAK_TIME : SESSION_TIME)}%`);
 }
 
-function updateScreen() {
+function updateControls() {
     controlsRef.removeAttribute('class');
     controlsRef.classList.add(state);
 }
 
 function updateBreakState() {
-    if (isBrake) {
-        bodyRef.classList.add('brake');
+    if (isBreak) {
+        bodyRef.classList.add('break');
         return;
     }
-    bodyRef.classList.remove('brake');
+    bodyRef.classList.remove('break');
+}
+
+function updateTabInfo() {
+
 }
 
 function init() {
     state = 'idle';
-    updateScreen();
+    updateControls();
 
-    isBrake = false;
+    isBreak = false;
     updateBreakState();
     
     timer = SESSION_TIME;
     pausedAt = null;
     updateTimer(timer);
-}
-
-function running() {
-    bodyRef.classList.add('running');
 }
