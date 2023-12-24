@@ -1,7 +1,8 @@
-const SESSION_TIME = 1 * 2 * 1000;
-const BREAK_TIME = 1 * 2 * 1000;
+const SESSION_TIME = 1 * 10 * 1000;
+const BREAK_TIME = 5 * 60 * 1000;
 const STEP = 1000;
 
+const bodyRef = document.body;
 const timerRef = document.getElementById("timer");
 const controlsRef = document.getElementById("controls-container");
 
@@ -45,6 +46,7 @@ function stop() {
 
 function updateTimer(timerNext) {
     timerRef.innerHTML = new Date(timerNext).toISOString().slice(14, -5);
+    bodyRef.style.setProperty('--counter-size', `${timerNext * 100 / (isBrake ? BREAK_TIME : SESSION_TIME)}%`);
 }
 
 function updateScreen() {
@@ -54,10 +56,10 @@ function updateScreen() {
 
 function updateBreakState() {
     if (isBrake) {
-        document.body.classList.add('brake');
+        bodyRef.classList.add('brake');
         return;
     }
-    document.body.classList.remove('brake');
+    bodyRef.classList.remove('brake');
 }
 
 function init() {
@@ -73,5 +75,5 @@ function init() {
 }
 
 function running() {
-    document.body.classList.add('running');
+    bodyRef.classList.add('running');
 }

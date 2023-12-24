@@ -4,11 +4,21 @@ body {
     color: #7ac4b1;
     margin: 0;
     padding: 0;
+    user-select: none;
+    --counter-size: 100%;
 }
 
 body.brake {
     background-color: #0a0a24;
     color: #9999ff;
+}
+
+body:has(button:active), body:has(button:hover) {
+    background-color: #103e38;
+}
+
+body.brake:has(button:active), body.brake:has(button:hover) {
+    background-color: #19195f;
 }
 
 .container {
@@ -46,7 +56,6 @@ body.brake {
 
 button {
     padding: 0;
-    margin: 0 5vmin;
     border: none;
     background: transparent;
     color: inherit;
@@ -55,6 +64,27 @@ button {
     font-size: 0;
     box-sizing: border-box;
     cursor: pointer;
+}
+
+button:before {
+    background-color: transparent;
+    transition: background-color 0.2s linear;
+}
+
+button.start {
+    margin: 0 15vmin;
+}
+
+.paused button.start {
+    margin-left: 0;
+}
+
+button.pause {
+    margin-right: 15vmin;
+}
+
+button.stop {
+    margin-left: 15vmin;
 }
 
 button svg {
@@ -67,4 +97,44 @@ button svg {
     height: 100%;
     width: 100%;
     fill: #9999ff;
+}
+
+.counter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2vmin;
+    width: var(--counter-size);
+    background-color: #7ac4b1;
+    border-radius: 10vmin;
+}
+
+.brake .counter {
+    background-color: #9999ff;
+}
+
+.counter.left,
+.counter.right {
+    width: 2vmin;
+    height: var(--counter-size);
+    transition: height .5s linear;
+}
+
+.counter.top,
+.counter.bottom {
+    transition: width .5s linear;
+}
+
+.counter.bottom {
+    top: auto;
+    bottom: 0;
+    right: 0;
+    left: auto;
+}
+
+.counter.right {
+    top: auto;
+    bottom: 0;
+    left: auto;
+    right: 0;
 }
