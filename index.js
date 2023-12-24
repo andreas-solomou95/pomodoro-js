@@ -5,6 +5,7 @@ const STEP = 1000;
 const bodyRef = document.body;
 const timerRef = document.getElementById("timer");
 const controlsRef = document.getElementById("controls-container");
+const tabTitleRef = document.querySelector('title');
 
 let interval;
 let timer = SESSION_TIME;
@@ -45,7 +46,9 @@ function stop() {
 }
 
 function updateTimer(timerNext) {
-    timerRef.innerHTML = new Date(timerNext).toISOString().slice(14, -5);
+    const displayedTime = new Date(timerNext).toISOString().slice(14, -5);
+    timerRef.innerHTML = displayedTime;
+    tabTitleRef.innerHTML = `${displayedTime} - ${isBreak ? 'Break Time' : 'Focus Time'}`;
     bodyRef.style.setProperty('--counter-size', `${timerNext * 100 / (isBreak ? BREAK_TIME : SESSION_TIME)}%`);
 }
 
@@ -55,6 +58,7 @@ function updateControls() {
 }
 
 function updateBreakState() {
+    updateTabInfo();
     if (isBreak) {
         bodyRef.classList.add('break');
         return;
@@ -63,7 +67,10 @@ function updateBreakState() {
 }
 
 function updateTabInfo() {
-
+    const tabIcon = document.querySelector('link[rel=icon]');
+    tabIcon.href = isBreak 
+        ? "/assets/break.ico"
+        : "/assets/focus.ico";
 }
 
 function init() {
