@@ -58,7 +58,7 @@ function updateControls() {
 }
 
 function updateBreakState() {
-    updateTabInfo();
+    updateTabIcon();
     if (isBreak) {
         bodyRef.classList.add('break');
         return;
@@ -66,7 +66,7 @@ function updateBreakState() {
     bodyRef.classList.remove('break');
 }
 
-function updateTabInfo() {
+function updateTabIcon() {
     const tabIcon = document.querySelector('link[rel=icon]');
     tabIcon.href = isBreak 
         ? "/assets/break.ico"
