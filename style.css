@@ -13,14 +13,6 @@ body.break {
     color: #9999ff;
 }
 
-body:has(button:active) {
-    background-color: #103e38;
-}
-
-body.break:has(button:active) {
-    background-color: #19195f;
-}
-
 .container {
     display: flex;
     flex-direction: column;
