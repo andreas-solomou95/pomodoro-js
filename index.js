@@ -1,5 +1,5 @@
-const SESSION_TIME = 25 * 60 * 1000;
-const BREAK_TIME = 5 * 60 * 1000;
+const SESSION_TIME = 1 * 5 * 1000;
+const BREAK_TIME = 1 * 2 * 1000;
 const STEP = 1000;
 
 const bodyRef = document.body;

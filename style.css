@@ -80,14 +80,12 @@ button.stop {
 }
 
 button svg {
-    height: 100%;
-    width: 100%;
+    height: 10vmin;
+    width: 10vmin;
     fill: #7ac4b1;
 }
 
 .break button svg {
-    height: 100%;
-    width: 100%;
     fill: #9999ff;
 }
 
