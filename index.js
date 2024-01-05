@@ -1,5 +1,5 @@
-const SESSION_TIME = 1 * 1 * 1000;
-const BREAK_TIME = 1 * 2 * 1000;
+const SESSION_TIME = 1 * 5 * 1000;
+const BREAK_TIME = 1 * 5 * 1000;
 const STEP = 1000;
 
 const bodyRef = document.body;
@@ -61,6 +61,7 @@ function updateControls() {
 
 function updateBreakState() {
     if (state === 'running') {
+        notification.src = './assets/tone.wav';
         notification.play();
     }
     updateTabIcon();
@@ -94,6 +95,5 @@ function initSound() {
     // SOLUTION FOR sound NOT PLAYING ON iOS
     // https://stackoverflow.com/questions/31776548/why-cant-javascript-play-audio-files-on-iphone-safari
     notification.autoplay = true;
-    notification.src = "data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
-    notification.src = './assets/tone.wav';
+    notification.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA"
 }
