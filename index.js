@@ -6,7 +6,15 @@ const bodyRef = document.body;
 const timerRef = document.getElementById("timer");
 const controlsRef = document.getElementById("controls-container");
 const tabTitleRef = document.querySelector('title');
-const notification = new Audio('./assets/tone.wav');
+const notification = new Audio();
+// SOLUTION FOR sound NOT PLAYING ON iOS
+// https://stackoverflow.com/questions/31776548/why-cant-javascript-play-audio-files-on-iphone-safari
+notification.autoplay = true;
+// onClick of first interaction on page before I need the sounds
+notification.src = "data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
+// later on when you actually want to play a sound at any point without user interaction
+notification.src = './assets/tone.wav';
+
 
 let interval;
 let timer = SESSION_TIME;
