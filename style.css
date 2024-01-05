@@ -24,9 +24,8 @@ body.break {
 }
 
 #timer {
-    font-size: 40vmin;
+    font-size: 35vmin;
     box-sizing: border-box;
-    padding: 0 2vw;
 }
 
 #controls-container {
