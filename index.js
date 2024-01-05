@@ -1,5 +1,5 @@
-const SESSION_TIME = 1 * 6 * 1000;
-const BREAK_TIME = 1 * 6 * 1000;
+const SESSION_TIME = 1 * 5 * 1000;
+const BREAK_TIME = 1 * 5 * 1000;
 const STEP = 1000;
 
 const bodyRef = document.body;
@@ -61,7 +61,7 @@ function updateControls() {
 
 function updateBreakState() {
     if (state === 'running') {
-        
+        notification.src = './assets/tone.wav';
         notification.play();
     }
     updateTabIcon();
@@ -94,7 +94,6 @@ function init() {
 function initSound() {
     // SOLUTION FOR sound NOT PLAYING ON iOS
     // https://stackoverflow.com/questions/31776548/why-cant-javascript-play-audio-files-on-iphone-safari
-    // notification.autoplay = true;
+    notification.autoplay = true;
     notification.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA"
-    notification.src = './assets/tone.wav';
 }
