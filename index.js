@@ -1,4 +1,4 @@
-const SESSION_TIME = 1 * 5 * 1000;
+const SESSION_TIME = 1 * 2 * 1000;
 const BREAK_TIME = 1 * 2 * 1000;
 const STEP = 1000;
 
@@ -6,6 +6,7 @@ const bodyRef = document.body;
 const timerRef = document.getElementById("timer");
 const controlsRef = document.getElementById("controls-container");
 const tabTitleRef = document.querySelector('title');
+const notification = new Audio('./assets/tone.wav');
 
 let interval;
 let timer = SESSION_TIME;
@@ -58,6 +59,9 @@ function updateControls() {
 }
 
 function updateBreakState() {
+    if (state === 'running') {
+        notification.play();
+    }
     updateTabIcon();
     if (isBreak) {
         bodyRef.classList.add('break');
