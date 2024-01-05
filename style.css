@@ -20,13 +20,13 @@ body.break {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(calc(-50% - 2vw), -50%);
-    margin: 0 2vw;
+    transform: translate(-50%, -50%);
 }
 
 #timer {
     font-size: 40vmin;
     box-sizing: border-box;
+    padding: 0 2vw;
 }
 
 #controls-container {
