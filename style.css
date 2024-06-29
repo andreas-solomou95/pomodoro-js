@@ -72,12 +72,8 @@ button.start {
     margin-left: 0;
 }
 
-button.pause {
+button.pause, button.skip {
     margin-right: 15vmin;
-}
-
-button.stop {
-    margin-left: 15vmin;
 }
 
 button svg {

@@ -26,9 +26,7 @@ function start() {
         if (timer - STEP >= 0) {
             timer -= STEP;
         } else {
-            timer = isBreak ? SESSION_TIME : BREAK_TIME;
-            isBreak = !isBreak;
-            updateBreakState();
+            toggleState()
         }
         updateTimer(timer);
     }, STEP);
@@ -42,9 +40,20 @@ function pause() {
     pausedAt = timer;
 }
 
+function skip() {
+    toggleState();
+    updateTimer(timer);
+}
+
 function stop() {
     clearInterval(interval);
     init();
+}
+
+function toggleState() {
+    timer = isBreak ? SESSION_TIME : BREAK_TIME;
+    isBreak = !isBreak;
+    updateBreakState();
 }
 
 function updateTimer(timerNext) {
